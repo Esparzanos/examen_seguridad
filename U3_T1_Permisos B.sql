@@ -2,7 +2,7 @@
 Nombre: BD1
 Tablas:
 clientes: cte, nombre, domicilio
-Empleados: emp, nombre, domicilio, telÈfono
+Empleados: emp, nombre, domicilio, tel√©fono
 Ventas: folio, fecha, cte, emp*/
 
 CREATE DATABASE BD1
@@ -58,13 +58,13 @@ GO
 sp_addSRVRoleMeMber ALMA, SERVERADMIN
 GO
 
---2.- Dar de alta al IS JUAN para que pueda auxiliar en la administraciÛn de inicios de sesiÛn, que pueda dar de alta inicios de sesiÛn y cambiar password.
+--2.- Dar de alta al IS JUAN para que pueda auxiliar en la administraci√≥n de inicios de sesi√≥n, que pueda dar de alta inicios de sesi√≥n y cambiar password.
 CREATE LOGIN JUAN WITH PASSWORD='234'
 GO
 sp_addSRVRoleMeMber JUAN, SECURITYADMIN
 GO
 
---3.- Dar de alta al IS JOSE y configurarlo para que tenga las mismas caracterÌsticas que el inicio de sesiÛn SA.
+--3.- Dar de alta al IS JOSE y configurarlo para que tenga las mismas caracter√≠sticas que el inicio de sesi√≥n SA.
 CREATE LOGIN JOSE WITH PASSWORD='345'
 GO
 sp_addSRVRoleMember JOSE, sysadmin
@@ -100,8 +100,8 @@ WITH DEFAULT_SCHEMA = DBO
 GO
 sp_AddRoleMember 'db_ddlAdmin', NORA
 GO
-/*6.- En la base de datos BD1 crear la funciÛn CONSULTA y darle permiso para que pueda seleccionar solo las 2 primeras columnas de cada tabla.
-A los IS NORA Y PERLA creados en el punto 6, agregarlos en la funciÛn CONSULTA de la base de datos BD1.*/
+/*6.- En la base de datos BD1 crear la funci√≥n CONSULTA y darle permiso para que pueda seleccionar solo las 2 primeras columnas de cada tabla.
+A los IS NORA Y PERLA creados en el punto 6, agregarlos en la funci√≥n CONSULTA de la base de datos BD1.*/
 USE BD1
 GO
 CREATE ROLE CONSULTA;
@@ -113,10 +113,10 @@ sp_AddRoleMember 'CONSULTA', NORA
 GO
 sp_AddRoleMember 'CONSULTA', PERLA
 
---7.- Dar de alta al IS CARLOS y que pueda insertar y eliminar datos en la BD2, adem·s pueda crear vistas y tablas en la misma base de datos.
+--7.- Dar de alta al IS CARLOS y que pueda insertar y eliminar datos en la BD2, adem√°s pueda crear vistas y tablas en la misma base de datos.
 CREATE LOGIN CARLOS WITH PASSWORD='789'
 
-USE BD1
+USE BD2
 CREATE USER CARLOS
 WITH DEFAULT_SCHEMA = DBO
 
@@ -124,8 +124,8 @@ GRANT INSERT, DELETE TO CARLOS
 GRANT CREATE VIEW, CREATE TABLE TO CARLOS
 GO
 
-/*8.- Es necesario crear los IS siguientes: asesor01, asesor02,Ö asesor80. Crear un procedimiento almacenado que los genere autom·ticamente con la 
-caracterÌstica que le cambien el password la primera vez que se conecten.*/
+/*8.- Es necesario crear los IS siguientes: asesor01, asesor02,‚Ä¶ asesor80. Crear un procedimiento almacenado que los genere autom√°ticamente con la 
+caracter√≠stica que le cambien el password la primera vez que se conecten.*/
 CREATE PROCEDURE CrearUsuarios
 AS
 BEGIN
